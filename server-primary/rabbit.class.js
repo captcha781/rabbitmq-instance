@@ -19,7 +19,7 @@ class Rabbit {
     }
 
     async sendMessages(message, encoding='utf-8') {
-        this.channel.sendToQueue(this.queue, Buffer.isBuffer(message) ? message : Buffer.from(message, encoding))
+        this.channel.sendToQueue(this.queue, Buffer.isBuffer(message) ? message : Buffer.from(message, encoding), { persistent: true })
         return true
     }
 
